@@ -1,0 +1,15 @@
+rules:
+  - id: learned.python.flask.security.audit.app-run-security-config.avoid_using_app_run_directly-d9d06bff077d
+    languages:
+      - python
+    severity: WARNING
+    pattern: $APP.run(..., debug=True, ...)
+    message: "Flask application runs with debug mode enabled. Learned by AEGIS from https://github.com/andriidrok1/aegis-demo-target/issues/66."
+    metadata:
+      cwe: "CWE-489"
+      source_issue: "https://github.com/andriidrok1/aegis-demo-target/issues/66"
+      source_repo: "andriidrok1/aegis-demo-target"
+      learned_from_rule: "python.flask.security.audit.app-run-security-config.avoid_using_app_run_directly"
+      fingerprint: "d9d06bff077d"
+      category: "security"
+      aegis: "learned"
