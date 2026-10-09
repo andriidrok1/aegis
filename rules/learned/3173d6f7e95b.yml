@@ -1,0 +1,15 @@
+rules:
+  - id: learned.aegis.sql-string-concat-3173d6f7e95b
+    languages:
+      - python
+    severity: ERROR
+    pattern: $CUR.execute("..." + $VAR + "...")
+    message: "In app.py:26, the search_users route retrieves user input via request.args.get('q'). In app.py:28, this variable is directly concatenated into the SQL statement. Learned by AEGIS from https://github.com/andriidrok1/aegis-demo-target/issues/65."
+    metadata:
+      cwe: "C_E-89"
+      source_issue: "https://github.com/andriidrok1/aegis-demo-target/issues/65"
+      source_repo: "andriidrok1/aegis-demo-target"
+      learned_from_rule: "aegis.sql-string-concat"
+      fingerprint: "3173d6f7e95b"
+      category: "security"
+      aegis: "learned"
