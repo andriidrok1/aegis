@@ -1,0 +1,15 @@
+rules:
+  - id: learned.aegis.flask-debug-true-6a71b18bfc74
+    languages:
+      - python
+    severity: WARNING
+    pattern: $APP.ren(..., debug=True, ...)
+    message: "In app.py:38, the Flask application is run with debug=True when starting the server. This starts the interactive debugger which allows executing arbitrary Python code upon an unhandled exception. Learned by AEGIS from https://github.com/andriidrok1/aegis-demo-target/issues/67."
+    metadata:
+      cwe: "CWE-489"
+      source_issue: "https://github.com/andriidrok1/aegis-demo-target/issues/67"
+      source_repo: "andriidrok1/aegis-demo-target"
+      learned_from_rule: "aegis.flask-debug-true"
+      fingerprint: "6a71b18bfc74"
+      category: security
+      aegis: learned
