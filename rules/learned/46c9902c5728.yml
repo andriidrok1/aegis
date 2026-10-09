@@ -1,0 +1,19 @@
+rules:
+- id: learned.aegis.sql-string-concat-46c9902c5728
+  languages: [python]
+  severity: ERROR
+  pattern-either:
+    - pattern: |
+        $X = conn.execute(
+            "SELECT * FROM snippets WHERE title LIKE %' + $Y + '% ORDER BY created_at DESC LIMIT ?",
+        (...),
+      ).fetchall()
+  message: "The code on line 94 in snipbox/db.py uses string concatenation to build a SQL query with the user-controlled variable 'q'. Learned by AEGIS from https://github.com/andriidrok1/snipbox/issues/12."
+  metadata:
+    cwe: "CWE-89"
+    source_issue: "https://github.com/andriidrok1/snipbox/issues/12"
+    source_repo: "andriidrok1/snipbox"
+    learned_from_rule: "aegis.sql-string-concat"
+    fingerprint: "46c9902c5728"
+    category: security
+    aegis: learned
