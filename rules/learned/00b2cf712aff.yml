@@ -1,0 +1,17 @@
+rules:
+  - id: learned.python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host-00b2cf712aff
+    languages:
+      - python
+    severity: WARNING
+    pattern-either:
+      - pattern: $APP.run(..., host="0.0.0.0", ..., debug=True, ...)
+      - pattern: $APP.run(..., debug=True, ..., host="0.0.0.0", ...)
+    message: "In app.py:36, the Flask application is configured to run with debug=True and bind to all network interfaces (host=\"0.0.0.0\"). Learned by AEGIS from https://github.com/andriidrok1/aegis-demo-target/issues/57."
+    metadata:
+      cwe: "CWE-489"
+      source_issue: "https://github.com/andriidrok1/aegis-demo-target/issues/57"
+      source_repo: "andriidrok1/aegis-demo-target"
+      learned_from_rule: "python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host"
+      fingerprint: "00b2cf712aff"
+      category: security
+      aegis: learned
